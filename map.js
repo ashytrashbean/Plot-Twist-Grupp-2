@@ -44,7 +44,7 @@ mockPlantData.forEach(plant => {
 // A. Create the Map Pin
 // We use the lat/lng from the specific plant object
 const marker = L.marker([plant.lat, plant.lng]).addTo(map);
-marker.bindPopup(`<b>${plant.name}</b><br>Owned by ${plant.owner}`);
+marker.bindPopup(`<b>${plant.name}</b> <br><img src="${plant.image}" alt="${plant.name}"><br>Owned by ${plant.owner}`);
 
 // B. Create the Plant Card (HTML)
 // We use "Template Literals" (the backticks ``) to inject the data
