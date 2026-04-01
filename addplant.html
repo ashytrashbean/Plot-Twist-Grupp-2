@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Plant</title>
+<link rel="stylesheet" href="addplant.css">
+
+</head>
+<body>
+  <div class="phone">
+
+    <!-- Scrollable form content -->
+    <div class="content">
+
+      <!-- Plant name -->
+      <div class="field">
+        <label>Plant name</label>
+        <input type="text" placeholder="Name of plant" />
+      </div>
+
+      <!-- Latin name -->
+      <div class="field">
+        <label>Plant's Latin name</label>
+        <input type="text" placeholder="Latin plant name" />
+      </div>
+
+      <!-- Picture upload -->
+      <div>
+        <span class="upload-label">Picture of Plant</span>
+        <label class="upload-box">
+          <input type="file" accept="image/*" hidden />
+          <!-- Upload icon -->
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8"
+               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16V4m0 0-4 4m4-4 4 4"/>
+            <path d="M4 20h16"/>g
+          </svg>
+          Upload image
+        </label>
+      </div>
+
+      <!-- Pickup location -->
+      <div class="field">
+        <label>Where to pickup plant</label>
+        <input type="text" placeholder="pickup location ex library" />
+      </div>
+
+      <!-- Pickup time -->
+      <div class="field">
+        <label>What available time to pickup plant</label>
+        <input type="text" placeholder="morning (7am - 12pm)" />
+      </div>
+
+      <!-- Add button -->
+      <button class="btn-add">Add Plant</button>
+
+    </div>
+
+      <!-- Nav bar -->
+    <nav class="bottom-nav">
+        <a href="#">Start</a>
+        <a href="#">Favourites</a>
+        <a href="#">Add Plant</a>
+        <a href="#">Notification</a>
+        <a href="#">Log in</a>
+    </nav>
+
+  </div>
+</body>
+</html>

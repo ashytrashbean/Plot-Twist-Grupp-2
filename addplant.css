@@ -1,0 +1,138 @@
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f7f6f3;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .phone {
+      width: 400px;
+      min-height: 100vh;
+      background: #f7f6f3;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ── Scrollable content ── */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── Form groups ── */
+    .field label {
+      display: block;
+      font-size: 14px;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 14px 16px;
+      background: #e8e7e3;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #888;
+      outline: none;
+    }
+
+    .field input::placeholder {
+      color: #aaa;
+    }
+
+    /* ── Image upload ── */
+    .upload-label {
+      display: block;
+      font-size: 14px;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .upload-box {
+      width: 220px;
+      height: 155px;
+      background: #e8e7e3;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      gap: 8px;
+      color: #888;
+      font-size: 13px;
+    }
+
+    .upload-box svg {
+      color: #888;
+    }
+
+    /* ── Add Plant button ── */
+    .btn-add {
+      width: 100%;
+      padding: 17px;
+      background: #e8e7e3;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #222;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn-add:hover {
+      background: #d5d4d0;
+    }
+
+    /* ── Bottom nav ── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 400px;
+      background: #f7f6f3;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0 14px;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: #555;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-item.active {
+      color: #222;
+    }
+
+    .nav-item svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .nav-center-icon {
+      background: #e8e7e3;
+      border-radius: 50%;
+      padding: 6px;
+    }
