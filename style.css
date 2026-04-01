@@ -10,7 +10,11 @@
     --white: #ffffff;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -42,6 +46,17 @@
     border-radius: var(--radius);
     padding: 16px 18px;
     box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 400px;
+    background: #f7f6f3;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 14px;
   }
 
   #map{

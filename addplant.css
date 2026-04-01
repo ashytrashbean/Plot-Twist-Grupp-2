@@ -1,13 +1,12 @@
-
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     body {
-      font-family: 'Georgia', serif;
-      background: #f7f6f3;
+      font-family: 'DM Sans', sans-serif;
+      background: #f7f3ee;
       display: flex;
       justify-content: center;
       min-height: 100vh;
@@ -16,7 +15,7 @@
     .phone {
       width: 400px;
       min-height: 100vh;
-      background: #f7f6f3;
+      background: #f7f3ee;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -109,30 +108,4 @@
       display: flex;
       justify-content: space-around;
       padding: 10px 0 14px;
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      color: #555;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .nav-item.active {
-      color: #222;
-    }
-
-    .nav-item svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .nav-center-icon {
-      background: #e8e7e3;
-      border-radius: 50%;
-      padding: 6px;
     }
