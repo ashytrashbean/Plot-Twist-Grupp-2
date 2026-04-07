@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Plant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="addplant.css">
+<script type="module" src="addPlant.js"></script>
+
+</head>
+<body>
+  <div class="phone">
+
+    <!-- Scrollable form content -->
+    <div class="content">
+      <h1 class="title">Add New Plant</h1>
+      <form id="add-plant-form">
+        <!-- Plant name -->
+        <div class="field">
+          <label>Plant name</label>
+          <input type="text" id="plant-name" placeholder="Name of plant" />
+        </div>
+
+        <div class="field">
+          <label>https://</label>
+          <input type="text" id="plant-image" placeholder="Link with picture" />
+        </div>
+
+        <!-- Latin name -->
+        <div class="field">
+          <label>Plant's Latin name</label>
+          <input type="text" id="plant-type" placeholder="Latin plant name" />
+        </div>
+
+        <label>Brightness level</label><br>
+        <select name="brightness" id="brightnessLevel">
+          <option value="" disabled selected>———</option>
+          <option value="low">Low</option>
+          <option value="bright">Low-medium</option>
+          <option value="partial">Medium</option>
+          <option value="directSun">High</option>
+        </select>
+
+        <!-- Picture upload -->
+        <!-- <div>
+          <span class="upload-label">Picture of Plant</span>
+          <label class="upload-box">
+            <input type="text" id="plant-image"/>
+            Upload image
+          </label>
+        </div> -->
+
+        <!-- Pickup location -->
+        <div class="field">
+          <label>Where to pickup plant</label>
+          <input type="text" id="plant-location" placeholder="pickup location ex library" />
+        </div>
+
+        <!-- Pickup time -->
+        <div class="field">
+          <label>What available time to pickup plant</label>
+          <input type="date" id="plant-time" />
+        </div>
+
+        <!-- Add button -->
+        <button class="btn-add" id="addPlant-button">Add Plant</button>
+      </form>
+    </div>
+
+      <!-- Nav bar -->
+  <nav class="bottom-nav">
+    <a href="./index.html">
+      <br>
+      <img src="images/icons/home.png" alt="Start">
+    </a>
+
+    <a href="#">
+      <br>
+      <img src="images/icons/fav.png" alt="Favourites">
+    </a>
+
+    <a href="./addplant.html">
+      <img src="images/icons/add-plant.png" alt="Add Plant">
+    </a>
+
+    <a href="#">
+      <br>
+      <img src="images/icons/notif.png" alt="Notification">
+    </a>
+
+    <a href="./login.html">
+      <br>
+      <img src="images/icons/user-log-in.png" alt="Log in">
+    </a>
+  </nav>
+
+
+  </div>
+</body>
+</html>

@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin - Hakim Livs</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="admin.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <nav>
-        <a href="index.html" class="logo">Hakim Livs</a>
-        <ul class="nav-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="cart.html">Cart (0)</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="admin.html">Admin</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <main class="admin-main">
-      <h1>Admin – Create Product</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In</title>
 
-      <form id="createProductForm" class="admin-form">
-        <div class="admin-form-row">
-          <label for="name">Name</label>
-          <input type="text" id="name" required />
-        </div>
-        <div class="admin-form-row">
-          <label for="price">Price</label>
-          <input type="number" id="price" step="0.01" min="0" required />
-        </div>
-        <div class="admin-form-row">
-          <label for="stock">Stock</label>
-          <input type="number" id="stock" min="0" required />
-        </div>
-        <div class="admin-form-row">
-          <label for="image">Image URL</label>
-          <input type="url" id="image" required />
-        </div>
-        <div class="admin-form-row">
-          <label for="slug">Slug</label>
-          <input type="text" id="slug" required placeholder="e.g. organic-tomatoes" />
-        </div>
-        <button type="submit">Create Product</button>
-      </form>
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
-      <h2>Products</h2>
-      <div class="admin-table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Slug</th>
-            </tr>
-          </thead>
-          <tbody id="productsTableBody">
-            <tr><td colspan="4">Loading...</td></tr>
-          </tbody>
-        </table>
+  <!-- CSS -->
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+  <div class="phone">
+
+    <div class="content">
+
+      <!-- Login Section -->
+      <h1 class="title">Welcome Admin</h1>
+      <p class="subtitle">Log in to your administration account</p>
+
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" />
       </div>
-    </main>
 
-    <script type="module" src="./src/scripts/admin.js"></script>
-  </body>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" placeholder="Enter your password" />
+      </div>
+
+      <button class="btn-login">Log In</button>
+
+    </div>
+
+    <!-- Nav bar -->
+    <nav class="bottom-nav">
+      <a href="./index.html">
+        <br>
+        <img src="images/icons/home.png" alt="Start">
+      </a>
+
+      <a href="#">
+        <br>
+        <img src="images/icons/fav.png" alt="Favourites">
+      </a>
+
+      <a href="./addplant.html">
+        <img src="images/icons/add-plant.png" alt="Add Plant">
+      </a>
+
+      <a href="#">
+        <br>
+        <img src="images/icons/notif.png" alt="Notification">
+      </a>
+
+      <a href="./login.html">
+        <br>
+        <img src="images/icons/user-log-in.png" alt="Log in">
+      </a>
+    </nav>
+
+  </div>
+
+</body>
+
 </html>

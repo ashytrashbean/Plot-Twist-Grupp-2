@@ -1,8 +1,6 @@
-
 export function getBaseUrl() {
-  return "https://webbshop-2026-be-grupp-2.vercel.app/";
-  if (window.location.hostname.includes("localhost")) {
+  if (window.location.hostname.includes("localhost") && false) { // Kommentera ut för att komma åt lokal server igen
     return "http://localhost:3000/";
   }
-  // TODO: Add deployed backend URL
+  return "https://webbshop-2026-be-grupp-2.vercel.app/"; // Er backend-rotadress
 }
