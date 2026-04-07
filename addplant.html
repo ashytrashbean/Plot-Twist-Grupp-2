@@ -6,6 +6,7 @@
   <title>Add Plant</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="addplant.css">
+<script type="module" src="addPlant.js"></script>
 
 </head>
 <body>
@@ -13,45 +14,57 @@
 
     <!-- Scrollable form content -->
     <div class="content">
+      <form id="add-plant-form">
+        <!-- Plant name -->
+        <div class="field">
+          <label>Plant name</label>
+          <input type="text" id="plant-name" placeholder="Name of plant" />
+        </div>
 
-      <h1 class="title">Add New Plant</h1>
+        <div class="field">
+          <label>https://</label>
+          <input type="text" id="plant-image" placeholder="Link with picture" />
+        </div>
 
-      <!-- Plant name -->
-      <div class="field">
-        <label>Plant name</label>
-        <input type="text" placeholder="Name of plant" />
-      </div>
+        <!-- Latin name -->
+        <div class="field">
+          <label>Plant's Latin name</label>
+          <input type="text" id="plant-type" placeholder="Latin plant name" />
+        </div>
 
-      <!-- Latin name -->
-      <div class="field">
-        <label>Plant's Latin name</label>
-        <input type="text" placeholder="Latin plant name" />
-      </div>
+        <label>Brightness level</label><br>
+        <select name="brightness" id="brightnessLevel">
+          <option value="" disabled selected>———</option>
+          <option value="low">Low</option>
+          <option value="bright">Low-medium</option>
+          <option value="partial">Medium</option>
+          <option value="directSun">High</option>
+        </select>
 
-      <!-- Picture upload -->
-      <div>
-        <span class="upload-label">Picture of Plant</span>
-        <label class="upload-box">
-          <input type="file" accept="image/*" hidden/>
-          Upload image
-        </label>
-      </div>
+        <!-- Picture upload -->
+        <!-- <div>
+          <span class="upload-label">Picture of Plant</span>
+          <label class="upload-box">
+            <input type="text" id="plant-image"/>
+            Upload image
+          </label>
+        </div> -->
 
-      <!-- Pickup location -->
-      <div class="field">
-        <label>Where to pickup plant</label>
-        <input type="text" placeholder="pickup location ex library" />
-      </div>
+        <!-- Pickup location -->
+        <div class="field">
+          <label>Where to pickup plant</label>
+          <input type="text" id="plant-location" placeholder="pickup location ex library" />
+        </div>
 
-      <!-- Pickup time -->
-      <div class="field">
-        <label>What available time to pickup plant</label>
-        <input type="text" placeholder="morning (7am - 12pm)" />
-      </div>
+        <!-- Pickup time -->
+        <div class="field">
+          <label>What available time to pickup plant</label>
+          <input type="date" id="plant-time" />
+        </div>
 
-      <!-- Add button -->
-      <button class="btn-add">Add Plant</button>
-
+        <!-- Add button -->
+        <button class="btn-add" id="addPlant-button">Add Plant</button>
+      </form>
     </div>
 
       <!-- Nav bar -->
