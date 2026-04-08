@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Plant</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="addplant.css">
+<link rel="stylesheet" href="style.css">
 <script type="module" src="addPlant.js"></script>
 
 </head>
@@ -21,48 +21,40 @@
           <label>Plant name</label>
           <input type="text" id="plant-name" placeholder="Name of plant" />
         </div>
-
+<br>
         <div class="field">
-          <label>https://</label>
-          <input type="text" id="plant-image" placeholder="Link with picture" />
+          <label>Picture</label>
+          <input type="text" id="plant-image" placeholder="URL to picture" />
         </div>
-
+<br>
         <!-- Latin name -->
         <div class="field">
-          <label>Plant's Latin name</label>
+          <label>Plants Latin name</label>
           <input type="text" id="plant-type" placeholder="Latin plant name" />
         </div>
-
-        <label>Brightness level</label><br>
-        <select name="brightness" id="brightnessLevel">
-          <option value="" disabled selected>———</option>
-          <option value="low">Low</option>
-          <option value="bright">Low-medium</option>
-          <option value="partial">Medium</option>
-          <option value="directSun">High</option>
-        </select>
-
-        <!-- Picture upload -->
-        <!-- <div>
-          <span class="upload-label">Picture of Plant</span>
-          <label class="upload-box">
-            <input type="text" id="plant-image"/>
-            Upload image
-          </label>
-        </div> -->
-
+<br>
+        <div>
+          <select name="brightness" id="brightnessLevel">
+            <option value="" disabled selected>Brightness level</option>
+            <option value="low">Low</option>
+            <option value="bright">Low-medium</option>
+            <option value="partial">Medium</option>
+            <option value="directSun">High</option>
+          </select>
+        </div>
+<br>
         <!-- Pickup location -->
         <div class="field">
           <label>Where to pickup plant</label>
-          <input type="text" id="plant-location" placeholder="pickup location ex library" />
+          <input type="text" id="plant-location" placeholder="e.g. The library" />
         </div>
-
+<br>
         <!-- Pickup time -->
         <div class="field">
-          <label>What available time to pickup plant</label>
-          <input type="date" id="plant-time" />
+          <label>Available day to pickup plant</label>
+          <input type="date" id="plant-time"/>
         </div>
-
+<br>
         <!-- Add button -->
         <button class="btn-add" id="addPlant-button">Add Plant</button>
       </form>
