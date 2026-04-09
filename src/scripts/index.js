@@ -20,12 +20,11 @@ export function openPlantModal(plant, currentUser) {
 export async function sendTradeRequest(plant, currentUser) {
   const url = `${getBaseUrl()}trades`;
 
+  console.log("plant._id:", plant._id);
+
   const requestBody = {
     plantId: plant._id,
-    ownerId: plant.ownerId?._id || plant.ownerId,
-    requesterId: currentUser?._id || "demo-user-123",
-    meetingTime: plant.meetingTime,
-    status: "pending"
+    requesterId: "65f1a2b3c4d5e6f7a8b9c002"
   };
 
   try {
