@@ -26,7 +26,9 @@ body {
   min-height: 100dvh;
   position: relative;
   overflow-x: hidden;
-  padding: 60px;
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 /* ── TAGLINE CARD ── */
@@ -67,16 +69,16 @@ body {
 #map {
   height: 350px;
   z-index: 1;
-  border-radius: 12px;
+  border-radius: var(--radius);
 }
 
 #plant-grid {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 60px;
-  flex-wrap: wrap; */
+  flex-wrap: wrap;
   display: grid;
   grid-template-columns: auto auto ;
 }
