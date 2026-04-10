@@ -43,22 +43,28 @@ async function Getplants(map) {
 
     let allCardsHtml ="";
 
+    const markers = new L.MarkerClusterGroup();
+
     // This is your "Engine"
     plants.forEach(plant => {
 
         // A. Create the Map Pin
         // We use the lat/lng from the specific plant object
-        const marker = L.marker(plant.coordinates, {icon: pinIcon}).addTo(map);
-        marker.bindPopup(`<b>${plant.name}</b><br>
-        <img src="${plant.image}" alt="${plant.name}" height="100"><br>
-        <button id="more-info-${plant._id}">More info</button>`);
 
+        const marker = L.marker(plant.coordinates, {icon: pinIcon});
+
+        
+        marker.bindPopup(`<b>${plant.name}</b><br>
+            <img src="${plant.image}" alt="${plant.name}" height="100"><br>
+            <button id="more-info-${plant._id}">More info</button>`);
+            
         marker.on("popupopen", () => {
             const button = document.getElementById(`more-info-${plant._id}`);
             if (button) {
                 button.onclick = () => openPlantModal(plant, currentUser);
             }
         });
+        markers.addLayer(marker);
 
         
 
@@ -74,6 +80,7 @@ async function Getplants(map) {
         cardContainer.innerHTML += allCardsHtml;
     });
 
+        map.addLayer(markers)
         return plants;
 }
 
