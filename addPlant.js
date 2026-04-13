@@ -59,20 +59,6 @@ const mockLibraries = [
     },
 ]
 
-function GetMeetups(map){
-    const markers = new L.MarkerClusterGroup();
-    const markerMap= {};
-
-    mockLibraries.forEach(biblio =>{
-        const marker = L.marker(biblio.coordinates, {icon: pinIcon});
-
-        marker.bindPopup(`<b>${biblio.library}</b>`)
-        markers.addLayer(marker);
-        markerMap[biblio.library] = marker;
-    })
-
-    map.addLayer(markers)
-}
 
 
 
@@ -111,20 +97,35 @@ function manualLocation(latlng){
     selectCoordinates = coords;
     cityDropdown.value = "";
     libDropdown.value = "";
-
+    
     if(currentManualMarker){
         currentManualMarker.setLatLng(latlng);
-        L.marker(latlng, {icon: pinIcon});
     } else {
-        currentManualMarker = L.marker(latlng, {icon: pinIcon, draggable: true});
+        currentManualMarker = L.marker(latlng, {icon: pinIcon, draggable: true}).addTo(map);
     }
-    console.log("User pinned at:", coords);
+    map.flyTo(coords,15);
 }
 
-// map.on('click', (e)=> manualLocation(e.latlng));
+map.on('click', (e)=> manualLocation(e.latlng));
 
-// const geocoder = L.Control.geocoder().addTo(map);
-// geocoder.on('markgeocode', (e)=> manualLocation(e.geocode.center));
+const geocoder = L.Control.geocoder({ defaultMarkGeocode: false}).addTo(map);
+geocoder.on('markgeocode', (e)=> manualLocation(e.geocode.center));
+
+function GetMeetups(map){
+    const markers = new L.MarkerClusterGroup();
+    const markerMap= {};
+
+    mockLibraries.forEach(biblio =>{
+        const marker = L.marker(biblio.coordinates, {icon: pinIcon});
+
+        marker.bindPopup(`<b>${biblio.library}</b>`)
+        markers.addLayer(marker);
+        markers.addLayer(currentManualMarker);
+        markerMap[biblio.library] = marker;
+    })
+
+    map.addLayer(markers)
+}
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
