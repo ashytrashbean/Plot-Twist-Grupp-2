@@ -1,10 +1,10 @@
 import { getBaseUrl } from "./src/utils/api.js";
 
-const form = document.querySelector("#add-plant-form");
+const form = document.querySelector("#addPlant-button");
 const plantName = document.querySelector("#plant-name");
 const plantType = document.querySelector("#plant-type");
 const plantImage = document.querySelector("#plant-image");
-const plantLocation = document.querySelector("#plant-location");
+// const plantLocation = document.querySelector("#plant-location");
 const plantTime = document.querySelector("#plant-time");
 const brightnessLevel = document.querySelector("#brightnessLevel");
 
@@ -19,6 +19,8 @@ let pinIcon = L.icon({
 
 // inside the setView([latitude, longitude], map view distance)
 const map =L.map('map').setView([61.52, 12.74], 4);
+let selectCoordinates = [61.52, 12.74];
+let currentManualMarker = null;
 
 // This is purely the map object itself
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -68,10 +70,46 @@ function GetMeetups(map){
         markers.addLayer(marker);
         markerMap[biblio.library] = marker;
     })
+
     map.addLayer(markers)
 }
 
 GetMeetups(map);
+
+
+const cityDropdown = document.querySelector("#lib-city");
+const libDropdown = document.querySelector("#lib");
+
+
+cityDropdown.addEventListener("change", (e)=>{
+    const selectedCity = e.target.value;
+    libDropdown.innerHTML = '<option value="" disabled selected>Library</option>';
+
+    // Makes map focus on the city area (its targeting the first pin coordinates and showing a zoomed out view)
+    const filtered = mockLibraries.filter(l => l.city === selectedCity);
+    if(filtered.length >0){
+        const cityFocus = filtered[0].coordinates;
+        map.flyTo(cityFocus, 12);
+    }
+
+    // Gives the library a dropdown that is dependant on which objects have the same city, then makes an list of options with their library names
+    filtered.forEach(l => {
+        const opt = document.createElement("option");
+        opt.value = JSON.stringify(l.coordinates);
+        opt.textContent = l.library;
+        libDropdown.appendChild(opt);
+    });
+});
+
+libDropdown.addEventListener('change', (e) => {
+    const coords = JSON.parse(e.target.value);
+    selectCoordinates = coords;
+    map.flyTo(coords, 15)
+});
+
+function updateManualLocation(latlng){
+    
+}
 
 
 form.addEventListener("submit", async (e) => {
@@ -83,10 +121,9 @@ form.addEventListener("submit", async (e) => {
         species: plantType.value.trim(),
         lightLevels: brightnessLevel.value,
         ownerId: "65f1a2b3c4d5e6f7a8b9c001",
-        coordinates: ["59.858", "17.644"], // Placeholder coordinates
+        coordinates: selectCoordinates, // Placeholder coordinates
         meetingTime: plantTime.value,
     };
-
     console.log("Submitting new plant:", newPlant);
 
     try {
