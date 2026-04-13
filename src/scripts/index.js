@@ -1,4 +1,5 @@
 import { getBaseUrl } from "../utils/api.js";
+let selectedTrade = null;
 
 export function openPlantModal(plant, currentUser) {
   document.querySelector("#modal-image").src = plant.image;
@@ -46,13 +47,13 @@ export async function sendTradeRequest(plant, currentUser) {
   }
 }
 
-document.getElementById("close-modal").onclick = () => {
-  document.getElementById("plant-modal").classList.add("hidden");
+document.querySelector("#close-modal").onclick = () => {
+  document.querySelector("#plant-modal").classList.add("hidden");
 };
 
-document.getElementById("plant-modal").onclick = (e) => {
+document.querySelector("#plant-modal").onclick = (e) => {
   if (e.target.id === "plant-modal") {
-    document.getElementById("plant-modal").classList.add("hidden");
+    document.querySelector("#plant-modal").classList.add("hidden");
   }
 };
 
@@ -60,30 +61,98 @@ document.getElementById("plant-modal").onclick = (e) => {
 // GET NOTIFICATIONS
 async function checkForTradeRequests() {
   const url = `${getBaseUrl()}trades`;
+
   try {
     const res = await fetch(url);
     const trades = await res.json();
 
-    const currentUserId = "65f1a2b3c4d5e6f7a8b9c001"; // owner (t.ex. Amara)
+    const currentUserId = "65f1a2b3c4d5e6f7a8b9c001";
 
-    const incomingRequests = trades.filter(trade => {
-      return (
-        trade.ownerId._id === currentUserId &&
-        trade.status === "pending"
-      );
-    });
+    const incomingRequests = trades.filter(trade =>
+      trade.ownerId._id === currentUserId &&
+      trade.status === "pending"
+    );
 
     if (incomingRequests.length > 0) {
       const firstRequest = incomingRequests[0];
 
-      alert(
-        `${firstRequest.requesterId.name} wants your plant ${firstRequest.plantId.name}`
-      );
+      openNotifications(firstRequest);
     }
+
   } catch (error) {
     console.error("Error fetching trades:", error);
   }
 }
+
+// SHOW NOTIFICATIONS
+function openNotifications(trade) {
+  const modal = document.querySelector("#notification-modal");
+  const text = document.querySelector("#notification-message");
+
+  selectedTrade = trade;
+
+  text.textContent = `${trade.requesterId.name} wants your plant ${trade.plantId.name}`;
+
+  modal.classList.remove("hidden");
+}
+
+document.querySelector("#close-notification-modal").onclick = () => {
+  document.querySelector("#notification-modal").classList.add("hidden");
+};
+
+document.querySelector("#notification-modal").onclick = (e) => {
+  if (e.target.id === "notification-modal") {
+    document.querySelector("#notification-modal").classList.add("hidden");
+  }
+};
+
+
+// UPDATE TRADE STATUS
+async function updateTradeStatus(tradeId, newStatus) {
+  const url = `${getBaseUrl()}trades/${tradeId}/status`;
+
+  try {
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ status: newStatus })
+    });
+
+    const text = await response.text();
+    const data = text ? JSON.parse(text) : null;
+
+    if (!response.ok) {
+      throw new Error(data?.message || "Could not update trade status");
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error updating trade:", error);
+    alert("Could not update trade: " + error.message);
+  }
+}
+
+// ACCEPT OR DECLINE TRADE
+document.querySelector("#accept-btn").onclick = async () => {
+  if (!selectedTrade) return;
+
+  await updateTradeStatus(selectedTrade._id, "approved");
+
+  alert("Trade accepted!");
+  document.querySelector("#notification-modal").classList.add("hidden");
+};
+
+document.querySelector("#decline-btn").onclick = async () => {
+  if (!selectedTrade) return;
+
+  await updateTradeStatus(selectedTrade._id, "declined");
+
+  alert("Trade declined!");
+  document.querySelector("#notification-modal").classList.add("hidden");
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
   checkForTradeRequests();
