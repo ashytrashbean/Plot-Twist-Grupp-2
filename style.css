@@ -370,7 +370,7 @@ display: inline-block;
   align-items: center;
 }
 
-#status {
+.status {
   font-style: italic;
   text-transform: capitalize;
   color: var(--green-deep);

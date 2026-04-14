@@ -1,6 +1,6 @@
 import { getBaseUrl } from "../utils/api.js";
 
-const currentUserId = "65f1a2b3c4d5e6f7a8b9c001";
+const currentUserId = "65f1a2b3c4d5e6f7a8b9c001"; // Amara Okafor
 
 document.addEventListener("DOMContentLoaded", () => {
     loadNotifications();
@@ -76,7 +76,7 @@ function createTradeCard(trade) {
                 <div class="notification-text">
                     <h3>${trade.plantId.name}</h3>
                     <p>Owner: <strong>${otherUserName}</strong></p>
-                    <p>Status: <span id="status">${trade.status}</span></p>
+                    <p>Status: <span class="status">${trade.status}</span></p>
                     <p>Meeting time: ${new Date(trade.plantId.meetingTime).toLocaleDateString()}</p>
                 </div>
             </div>
