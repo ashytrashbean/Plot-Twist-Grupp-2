@@ -355,6 +355,37 @@ display: inline-block;
   color: gray;
 }
 
+
+/* ——— NOTIFICATIONS ——— */
+.notification-plant-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.notification-img-text {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+#status {
+  font-style: italic;
+  text-transform: capitalize;
+  color: var(--green-deep);
+}
+
+.notification-big-card {
+  border: #222 solid 1px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+}
+
 /* TABLET (≥ 768px) */
 @media (min-width: 768px) {
   body {
