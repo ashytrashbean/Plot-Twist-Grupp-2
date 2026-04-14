@@ -89,7 +89,7 @@ function createTradeCard(trade) {
 
     if (acceptBtn) {
         acceptBtn.addEventListener("click", async () => {
-            await updateTradeStatus(trade._id, "approved");
+            await updateTradeStatus(trade._id, "accepted");
             loadNotifications();
         });
     }
@@ -104,24 +104,37 @@ function createTradeCard(trade) {
 }
 
 async function updateTradeStatus(tradeId, newStatus) {
+    const url = `${getBaseUrl()}trades/${tradeId}/status`;
+
+    console.log("PATCH url:", url);
+    console.log("tradeId:", tradeId);
+    console.log("newStatus raw:", JSON.stringify(newStatus));
+
     try {
-        const response = await fetch(`${getBaseUrl()}trades/${tradeId}`, {
+        const response = await fetch(url, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-            status: newStatus
+            status: newStatus.trim()
             })
         });
     
         const text = await response.text();
-        const data = text ? JSON.parse(text) : null;
+        console.log("Raw response text:", text);
+    
+        let data = null;
+        try {
+            data = text ? JSON.parse(text) : null;
+        } catch {
+            data = { message: text };
+        }
     
         if (!response.ok) {
-            throw new Error(data?.message || "Could not update trade status");
+            throw new Error(data?.message || `HTTP ${response.status}`);
         }
     
         return data;
-    }   catch (error) {
+    } catch (error) {
         console.error("Error updating trade:", error);
         alert("Could not update trade: " + error.message);
     }
