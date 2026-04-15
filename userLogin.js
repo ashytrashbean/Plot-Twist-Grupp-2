@@ -30,7 +30,7 @@ loginBtn.addEventListener("click", async () => {
     if (response.ok) {
       console.log("Inloggning lyckades!", data);
       localStorage.setItem("token", data.token);
-      window.location.href = "./index.html";
+      window.location.href = "./startpage.html";
     } else {
       console.error("Fel:", data.message);
       alert(data.message || "Något gick fel.");
@@ -42,11 +42,11 @@ loginBtn.addEventListener("click", async () => {
   }
 
   // log out //
-    const logoutBtn = document.querySelector("#logout");
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem(token);
-        console.log("Utloggning lyckades!", data);
-    });
+    // const logoutBtn = document.querySelector("#logout");
+    // logoutBtn.addEventListener("click", () => {
+    //     localStorage.removeItem(token);
+    //     console.log("Utloggning lyckades!", data);
+    // });
 
 });
 
@@ -126,7 +126,7 @@ signupBtn.addEventListener("click", async () => {
     if (response.ok) {
         console.log("Registrering lyckades!", data);
         localStorage.setItem("token", data.token);
-        window.location.href = "./index.html";
+        window.location.href = "./startpage.html";
     
     } else {
         console.error("Fel:", data.message);
