@@ -28,22 +28,22 @@
     <!-- Plant name -->
     <div class="field">
       <label>Plant name</label>
-      <input type="text" id="plant-name" placeholder="Name of plant" />
+      <input type="text" id="plant-name" placeholder="Name of plant" required />
     </div>
     <br>
     <div class="field">
       <label>Picture</label>
-      <input type="text" id="plant-image" placeholder="URL to picture" />
+      <input type="text" id="plant-image" placeholder="URL to picture" required />
     </div>
     <br>
     <!-- Latin name -->
     <div class="field">
       <label>Plants Latin name</label>
-      <input type="text" id="plant-type" placeholder="Latin plant name" />
+      <input type="text" id="plant-type" placeholder="Latin plant name" required />
     </div>
     <br>
     <div>
-      <select title="plant brightness" name="brightness" id="brightnessLevel">
+      <select title="plant brightness" name="brightness" id="brightnessLevel" required>
         <option value="" disabled selected>Brightness level</option>
         <option value="low">Low</option>
         <option value="bright">Low-medium</option>
@@ -56,13 +56,13 @@
     <div class="field">
       <!-- <input type="text" id="plant-location" placeholder="e.g. The library" />  -->
       <label>Where to pickup plant</label>
-      <select title="choose city" name="city" id="lib-city">
+      <select title="choose city" name="city" id="lib-city" required>
         <option value="" disabled selected>City</option>
         <option value="Stockholm">Stockholm</option>
         <option value="Uppsala">Uppsala</option>
         <option value="Västerås">Västerås</option>
       </select>
-      <select title="choose library" name="library" id="lib">
+      <select title="choose library" name="library" id="lib" required>
         <option value="" disabled selected>Library</option>
       </select>
       <br><br>
@@ -72,7 +72,7 @@
     <!-- Pickup time -->
     <div class="field">
       <label>Available day to pickup plant</label>
-      <input type="date" id="plant-time" title="Available day to pickup plant"/>
+      <input type="date" id="plant-time" title="Available day to pickup plant" required/>
     </div>
     <br>
     <!-- Add button -->
