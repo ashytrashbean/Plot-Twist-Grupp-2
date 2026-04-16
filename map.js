@@ -1,6 +1,6 @@
 import { getBaseUrl } from "./src/utils/api.js";
-import { smartFetch } from "./src/utils/api.js";
-// import { openPlantModal } from "./src/scripts/startpage.js";
+// import { smartFetch } from "./src/utils/api.js";
+import { openPlantModal } from "./src/scripts/plantModal.js";
 
 // const currentUser = {
 //     _id: "demo-user-123",
@@ -47,7 +47,7 @@ function filterCardsByMap(map, markerMap){
         const card = document.querySelector(`.plant-card[data-id="${plantId}]"`);
 
         if(card){
-            if(bounds.contain(marker.getLatLng())){
+            if(bounds.contains(marker.getLatLng())){
                 card.style.display = "block";
             }else{
                 card.style.display = "none";
@@ -93,7 +93,7 @@ async function Getplants(map) {
             if (button) {
                 button.onclick = () => {
                     if(isLoggedIn){
-                        openPlantModal(plant, savedUserInfo);
+                        openPlantModal(plant);
                     } else{
                         alert("You have to be logged in to see this feature!")
                     }
