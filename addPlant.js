@@ -4,10 +4,16 @@ const form = document.querySelector("#add-plant-form");
 const plantName = document.querySelector("#plant-name");
 const plantType = document.querySelector("#plant-type");
 const plantImage = document.querySelector("#plant-image");
-// const plantLocation = document.querySelector("#plant-location");
 const plantTime = document.querySelector("#plant-time");
 const brightnessLevel = document.querySelector("#brightnessLevel");
 
+const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+if (!userInfo) {
+    window.location.href = "./login.html";
+}
+
+const currentUserId = userInfo._id;
 
 let pinIcon = L.icon({
     iconUrl: './images/pin-logo.png',
@@ -132,7 +138,7 @@ form.addEventListener("submit", async (e) => {
         image: plantImage.value.trim(),
         species: plantType.value.trim(),
         lightLevels: brightnessLevel.value,
-        ownerId: "65f1a2b3c4d5e6f7a8b9c001", // Amara Okafor
+        ownerId: currentUserId,
         coordinates: selectCoordinates, 
         meetingTime: plantTime.value,
     };
@@ -160,4 +166,5 @@ form.addEventListener("submit", async (e) => {
         alert("An error occurred. Please try again.");
     }
 });
+
 GetMeetups(map);
