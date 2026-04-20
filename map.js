@@ -118,6 +118,8 @@ async function Getplants(map) {
         <div class="plant-card" data-id="${plant._id}">
             <img src="${plant.image}" alt="${plant.name}" height="91px">
             <h4>${plant.name}</h4>
+            <p><i>${plant.species}</i></p>
+            <p>Light level: ${plant.lightLevels}</p>
         </div>
         `;
 
