@@ -39,8 +39,16 @@ async function loadProfile() {
 
     // Calculate stats from the fetched userProfile
     const listedCount = userProfile.plants.length;
-    const pendingCount = userProfile.activeTrades.filter(t => t.status === "pending").length;
-    const swappedCount = userProfile.activeTrades.filter(t => t.status === "approved").length;
+
+    let pendingCount = 0;
+    if (userProfile.trades) {
+        pendingCount = userProfile.activeTrades.length;
+    }
+    
+    let swappedCount = 0;
+    if (userProfile.trades) {
+        swappedCount = userProfile.history.length;
+    }
 
     document.querySelector("#listed-number").textContent = listedCount;
     document.querySelector("#pending-number").textContent = pendingCount;
