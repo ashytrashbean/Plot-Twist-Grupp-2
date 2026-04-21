@@ -70,13 +70,28 @@ function createTradeCard(trade) {
 
     let actionButtons = "";
 
-    if (isOwner && trade.status === "pending") {
+    if (trade.status !== "completed") {
         actionButtons = `
             <div class="notification-actions">
-                <button class="accept-btn">Accept</button>
                 <button class="reject-btn">Reject</button>
             </div>
         `;
+    } 
+    
+    if(isOwner && trade.status === "pending"){
+        actionButtons = `
+        <div class="notification-actions">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+        `;  
+    } else if(isOwner && trade.status === "approved"){
+        actionButtons = `
+            <div class="notification-actions">
+                <button class="complete-btn">Complete</button>
+                <button class="reject-btn">Reject</button>
+            </div>
+        `;        
     }
 
     card.innerHTML = `
@@ -108,6 +123,7 @@ function createTradeCard(trade) {
     `;
 
     const acceptBtn = card.querySelector(".accept-btn");
+    const completeBtn = card.querySelector(".complete-btn");
     const rejectBtn = card.querySelector(".reject-btn");
 
     if (acceptBtn) {
@@ -120,6 +136,13 @@ function createTradeCard(trade) {
     if (rejectBtn) {
         rejectBtn.addEventListener("click", async () => {
             await updateTradeStatus(trade._id, "cancelled");
+            loadNotifications();
+        });
+    }
+
+    if (completeBtn) {
+        completeBtn.addEventListener("click", async () => {
+            await updateTradeStatus(trade._id, "completed");
             loadNotifications();
         });
     }
