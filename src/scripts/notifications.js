@@ -61,7 +61,16 @@ function createTradeCard(trade) {
     const isOwner = ownerId === currentUserId;
 
     const cardTypeClass = isOwner ? "incoming" : "outgoing";
-    const tradeTypeText = isOwner ? "Incoming request!" : "awaiting response...";
+
+        // NEW: status class
+        let statusClass = "";
+
+        if (trade.status === "approved") {
+            statusClass = "status-approved";
+        } else if (trade.status === "completed") {
+            statusClass = "status-completed";
+        }
+    const tradeTypeText = isOwner ? "Incoming request!" : "My request";
     const personLabel = isOwner ? "Requested by" : "Owner";
 
     const otherUserName = isOwner
@@ -80,7 +89,7 @@ function createTradeCard(trade) {
     }
 
     card.innerHTML = `
-        <div class="notification-big-card ${cardTypeClass}">
+        <div class="notification-big-card ${cardTypeClass} ${statusClass}">
             <p class="trade-type">${tradeTypeText}</p>
 
             <div class="notification-img-text">

@@ -393,13 +393,24 @@ display: inline-block;
 }
 
 .notification-big-card.incoming {
-  border-left: 6px solid #4CAF50;
+  border-left: 6px solid #949494;
   background-color: #f6fff6;
 }
 
 .notification-big-card.outgoing {
-  border-left: 6px solid #FFA726;
+  border-left: 6px solid #949494;
   background-color: #fffaf3;
+}
+
+.notification-big-card.status-approved {
+    background-color: #e8f5e9;
+    border: 2px solid #4caf50;
+}
+
+.notification-big-card.status-completed {
+  background-color: #eeeeee;
+  border: 2px solid #bdbdbd;
+  opacity: 0.7;
 }
 
 .trade-type {
