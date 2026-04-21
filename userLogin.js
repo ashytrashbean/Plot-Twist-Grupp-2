@@ -24,12 +24,11 @@ loginBtn.addEventListener("click", async () => {
   }
 
   try {
-    const url = `auth/login`;
+    const url = `${getBaseUrl()}auth/login`;
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({ email, password })
     });

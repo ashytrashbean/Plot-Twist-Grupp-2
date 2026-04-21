@@ -41,12 +41,12 @@ async function loadProfile() {
     const listedCount = userProfile.plants.length;
 
     let pendingCount = 0;
-    if (userProfile.trades) {
+    if (userProfile.activeTrades) {
         pendingCount = userProfile.activeTrades.length;
     }
-    
+
     let swappedCount = 0;
-    if (userProfile.trades) {
+    if (userProfile.history) {
         swappedCount = userProfile.history.length;
     }
 
