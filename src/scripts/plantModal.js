@@ -1,7 +1,11 @@
 import { getBaseUrl, smartFetch } from "../utils/api.js";
 import { isLoggedIn, getCurrentUserId } from "../utils/auth.js";
+import { mockLibraries, getLibraryName } from "../utils/libraries.js";
 
 export function openPlantModal(plant) {
+    console.log("Plant coords:", plant.coordinates);
+    console.log("Libraries:", mockLibraries);
+
     if (!isLoggedIn()) {
         Toastify({
             text: "Join the community to see details and trade plants",
@@ -20,7 +24,9 @@ export function openPlantModal(plant) {
     const image = document.querySelector("#modal-image");
     const name = document.querySelector("#modal-name");
     const owner = document.querySelector("#modal-owner");
+    const light = document.querySelector("#modal-light");
     const meetingTime = document.querySelector("#modal-time");
+    const meetingPlace = document.querySelector("#modal-place");
     const tradeBtn = document.querySelector("#trade-btn");
 
     if (!modal || !image || !name || !owner || !tradeBtn) return;
@@ -29,6 +35,8 @@ export function openPlantModal(plant) {
     image.alt = plant.name || "Plant image";
     name.textContent = plant.name || "Unknown plant";
     owner.textContent = "Owner: " + (plant.ownerId?.name || "Unknown");
+    light.textContent = "Lightness level: " + (plant.lightLevels || "Unknown");
+    meetingPlace.textContent = "Meeting place: " + getLibraryName(plant.coordinates);
     
     if (plant.meetingTime) {
         const formattedMeetingTime = new Date(plant.meetingTime).toLocaleString("sv-SE", {
@@ -140,3 +148,4 @@ async function sendTradeRequest(plant) {
         }).showToast();
     }
 }
+

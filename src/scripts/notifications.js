@@ -1,6 +1,6 @@
-import { getBaseUrl } from "../utils/api.js";
+import { getBaseUrl, smartFetch } from "../utils/api.js";
 import { requireAuth, getCurrentUserId } from "../utils/auth.js";
-import { smartFetch } from "../utils/api.js";
+import { mockLibraries, getLibraryName } from "../utils/libraries.js";
 
 requireAuth();
 
@@ -59,6 +59,7 @@ function createTradeCard(trade) {
 
     const ownerId = trade.ownerId?._id;
     const isOwner = ownerId === currentUserId;
+    const meetingPlace = getLibraryName(trade.plantId?.coordinates);
 
     const cardTypeClass = isOwner ? "incoming" : "outgoing";
 
@@ -142,6 +143,7 @@ function createTradeCard(trade) {
                                 : "Not set"
                         }
                     </p>
+                    <p>Meeting place: ${meetingPlace}</p>
                 </div>
             </div>
 

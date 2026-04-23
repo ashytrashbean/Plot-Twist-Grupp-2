@@ -1,4 +1,5 @@
 import { getBaseUrl, smartFetch } from "./src/utils/api.js";
+import { mockLibraries } from "./src/utils/libraries.js";
 
 const form = document.querySelector("#add-plant-form");
 const plantName = document.querySelector("#plant-name");
@@ -37,33 +38,33 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Creates the search function
 // L.Control.geocoder().addTo(map);
 
-const mockLibraries = [
-    {
-        city: "Stockholm",
-        library: "Stockholm Public Library (Asplundhuset)",
-        coordinates:[59.3434,18.0543]
-    },
-    {
-        city: "Stockholm",
-        library: "National Library of Sweden (Kungliga bibl.)",
-        coordinates:[59.3384, 18.0722]
-    },
-    {
-        city: "Uppsala",
-        library: "Uppsala Public Library",
-        coordinates:[59.8604, 17.6366]
-    },
-    {
-        city: "Uppsala",
-        library: "Carolina Rediviva (Uppsala University)",
-        coordinates:[59.8549, 17.6311]
-    },
-    {
-        city: "Västerås",
-        library: "Västerås City Library",
-        coordinates:[59.6119, 16.5448]
-    },
-]
+// const mockLibraries = [
+//     {
+//         city: "Stockholm",
+//         library: "Stockholm Public Library (Asplundhuset)",
+//         coordinates:[59.3434,18.0543]
+//     },
+//     {
+//         city: "Stockholm",
+//         library: "National Library of Sweden (Kungliga bibl.)",
+//         coordinates:[59.3384, 18.0722]
+//     },
+//     {
+//         city: "Uppsala",
+//         library: "Uppsala Public Library",
+//         coordinates:[59.8604, 17.6366]
+//     },
+//     {
+//         city: "Uppsala",
+//         library: "Carolina Rediviva (Uppsala University)",
+//         coordinates:[59.8549, 17.6311]
+//     },
+//     {
+//         city: "Västerås",
+//         library: "Västerås City Library",
+//         coordinates:[59.6119, 16.5448]
+//     },
+// ]
 
 
 const cityDropdown = document.querySelector("#lib-city");
